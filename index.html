@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Johann Glotin – Informatique, réseaux et cybersécurité</title>
+<meta name="description" content="Portfolio de Johann Glotin, Bac Pro CIEL mention très bien : réseaux, cybersécurité, maintenance informatique, Linux et domotique.">
+<meta name="theme-color" content="#150d2b">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #150d2b;
+    --surface: #21153f;
+    --line: #3a2a66;
+    --text: #f1ecff;
+    --muted: #a99ecf;
+    --violet: #8b5cf6;
+    --mint: #6ef3c5;
+    --head: "Unbounded", "Trebuchet MS", system-ui, sans-serif;
+    --body: "Outfit", "Segoe UI", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--mint); outline-offset: 3px; border-radius: 4px; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    --mx: 70%;
+    --my: 30%;
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    padding: 4rem 1.5rem;
+    overflow: hidden;
+    background:
+      radial-gradient(520px circle at var(--mx) var(--my), rgba(139, 92, 246, .45), transparent 70%),
+      var(--bg);
+  }
+  .wrap { position: relative; width: 100%; max-width: 54rem; margin: 0 auto; }
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    padding: .35rem .9rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(33, 21, 63, .7);
+    font-size: .95rem;
+    margin-bottom: 1.5rem;
+  }
+  .status::before {
+    content: "";
+    width: .6rem; height: .6rem;
+    border-radius: 50%;
+    background: var(--mint);
+  }
+  h1 {
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: clamp(2.6rem, 12.5vw, 6.5rem);
+    line-height: .95;
+    letter-spacing: -.04em;
+    margin: 0 0 1.5rem;
+  }
+  h1 span {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--violet);
+  }
+  .lead { max-width: 33rem; color: var(--muted); margin: 0 0 2rem; font-size: 1.2rem; }
+  .lead strong { color: var(--text); font-weight: 600; }
+  .actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+  .btn {
+    display: inline-block;
+    padding: .85rem 1.5rem;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid var(--violet);
+    transition: transform .15s ease, background .15s ease;
+  }
+  .btn.primary { background: var(--violet); color: #fff; }
+  .btn.ghost { color: var(--text); }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.ghost:hover { background: rgba(139, 92, 246, .15); }
+
+  /* Entrée du hero : une seule séquence au chargement */
+  .hero .wrap > * { opacity: 0; transform: translateY(14px); animation: rise .7s ease forwards; }
+  .hero .wrap > *:nth-child(2) { animation-delay: .1s; }
+  .hero .wrap > *:nth-child(3) { animation-delay: .25s; }
+  .hero .wrap > *:nth-child(4) { animation-delay: .4s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+
+  /* ---------- Sections ---------- */
+  main { max-width: 54rem; margin: 0 auto; padding: 0 1.5rem; }
+  section { padding: 4.5rem 0 0; }
+  h2 {
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: clamp(1.5rem, 5vw, 2.1rem);
+    letter-spacing: -.02em;
+    margin: 0 0 2rem;
+  }
+  h3 { font-family: var(--head); font-weight: 500; font-size: 1.05rem; margin: 0; letter-spacing: -.01em; }
+  .meta { color: var(--muted); font-size: 1rem; margin: .3rem 0 .4rem; }
+
+  /* Parcours : chronologie */
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 1.75rem; border-left: 2px solid var(--line); }
+  .timeline li { position: relative; padding-bottom: 2rem; }
+  .timeline li::before {
+    content: "";
+    position: absolute;
+    left: calc(-1.75rem - 7px);
+    top: .35rem;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 3px solid var(--violet);
+  }
+  .timeline li:first-child::before { border-color: var(--mint); }
+  .timeline p { margin: 0; }
+
+  /* Compétences */
+  .skills { display: grid; gap: 1.75rem; }
+  .skills h3 { margin-bottom: .7rem; color: var(--mint); }
+  .tags { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0; padding: 0; list-style: none; }
+  .tags li {
+    padding: .3rem .9rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 1rem;
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  .tags li:hover { border-color: var(--violet); transform: translateY(-2px); }
+
+  /* Projets : lignes qui s'ouvrent au toucher */
+  .projects { border-top: 1px solid var(--line); }
+  details { border-bottom: 1px solid var(--line); }
+  summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 0;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: "+";
+    flex: none;
+    width: 2.2rem; height: 2.2rem;
+    display: grid; place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    font-size: 1.4rem;
+    line-height: 1;
+    color: var(--mint);
+    transition: transform .2s ease, background .2s ease;
+  }
+  details[open] summary::after { transform: rotate(45deg); background: var(--surface); }
+  summary:hover h3 { color: var(--mint); }
+  .detail { padding: 0 0 1.5rem; max-width: 40rem; }
+  .detail p { margin: 0 0 .8rem; color: var(--muted); }
+  .stack { color: var(--mint); font-size: .95rem; font-weight: 500; }
+
+  /* Contact */
+  .contact { padding-bottom: 5rem; }
+  .contact ul { list-style: none; margin: 0 0 1.5rem; padding: 0; }
+  .contact li { padding: .25rem 0; font-size: 1.2rem; }
+  .contact a { text-decoration-color: var(--violet); text-underline-offset: 4px; text-decoration-thickness: 2px; }
+  .contact a:hover { color: var(--mint); }
+  .extra { color: var(--muted); margin: 0 0 1.75rem; }
+
+  footer { border-top: 1px solid var(--line); color: var(--muted); padding: 1.5rem; text-align: center; font-size: .95rem; }
+
+  /* Glissement des éléments au défilement (actif seulement si JavaScript tourne) */
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(48px);
+    transition: opacity 1.2s ease, transform 1.2s cubic-bezier(.2, .7, .2, 1);
+    transition-delay: var(--d, 0s);
+  }
+  .js .reveal.from-left { transform: translateX(-48px); }
+  .js .reveal.in { opacity: 1; transform: none; }
+
+  @media (min-width: 640px) {
+    .hero { padding: 5rem 2rem; }
+    .skills { grid-template-columns: 1fr 1fr; gap: 2.25rem 2.5rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .hero .wrap > * { animation: none; opacity: 1; transform: none; }
+    .btn, .tags li, summary::after { transition: none; }
+    .js .reveal, .js .reveal.from-left { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero" id="haut">
+  <div class="wrap">
+    <div class="status">En mission d'intérim, ouvert aux opportunités</div>
+    <h1>Johann <span>Glotin</span></h1>
+    <p class="lead">Je bidouille des <strong>réseaux</strong>, des <strong>serveurs Linux</strong> et des <strong>maisons connectées</strong>. Bac Pro CIEL, mention très bien.</p>
+    <div class="actions">
+      <a class="btn primary" href="cv.pdf">Télécharger mon CV</a>
+      <a class="btn ghost" href="#contact">Me contacter</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section id="parcours">
+    <h2>Parcours</h2>
+    <ol class="timeline">
+      <li>
+        <h3>Mission d'intérim en cours</h3>
+        <p class="meta">Cordon Électronique Quevert · depuis septembre 2026</p>
+        <!-- À compléter : ton poste et ce que tu fais (ex : câblage, tests, contrôle qualité) -->
+        <p>Mission d'intérim dans l'électronique.</p>
+      </li>
+      <li>
+        <h3>Bac Pro CIEL, mention très bien</h3>
+        <p class="meta">Lycée professionnel La Fontaine des Eaux, Dinan · 2023 – 2026</p>
+        <p>Cybersécurité, informatique et réseaux, électronique.</p>
+      </li>
+      <li>
+        <h3>Stage en maintenance informatique</h3>
+        <p class="meta">TBI 56, Groupe Factoria</p>
+        <!-- À compléter : 1 ou 2 phrases sur ce que tu as fait concrètement -->
+        <p>Maintenance informatique en entreprise.</p>
+      </li>
+      <li>
+        <h3>Stage en maintenance informatique</h3>
+        <p class="meta">Lycée agricole de Caulnes</p>
+        <!-- À compléter : 1 ou 2 phrases sur ce que tu as fait concrètement -->
+        <p>Maintenance du parc informatique d'un établissement scolaire.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="competences">
+    <h2>Compétences</h2>
+    <div class="skills">
+      <div>
+        <h3>Réseaux et cybersécurité</h3>
+        <ul class="tags"><li>Réseaux IP</li><li>Sécurité des systèmes</li><li>Sécurité web</li></ul>
+      </div>
+      <div>
+        <h3>Systèmes et maintenance</h3>
+        <ul class="tags"><li>Linux (Debian)</li><li>Windows</li><li>Dépannage matériel et logiciel</li></ul>
+      </div>
+      <div>
+        <h3>Auto-hébergement et domotique</h3>
+        <ul class="tags"><li>Home Assistant</li><li>Frigate</li><li>Zigbee2MQTT</li><li>WLED</li></ul>
+      </div>
+      <div>
+        <h3>Développement web</h3>
+        <ul class="tags"><li>HTML / CSS / JS</li><li>Next.js</li><li>Supabase</li><li>Vercel</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projets">
+    <h2>Projets personnels</h2>
+    <div class="projects">
+      <details>
+        <summary><h3>Serveur domotique Home Assistant</h3></summary>
+        <div class="detail">
+          <p>Maison connectée sur Home Assistant OS : caméras avec détection par Frigate, prises Zigbee pilotées via Zigbee2MQTT, éclairage LED WLED.</p>
+          <span class="stack">Home Assistant, Frigate, Zigbee2MQTT, WLED</span>
+        </div>
+      </details>
+      <details>
+        <summary><h3>Serveur Debian à la maison</h3></summary>
+        <div class="detail">
+          <p>Serveur Linux personnel pour héberger mes services et automatiser des tâches, avec accès à distance.</p>
+          <span class="stack">Debian, SSH, Docker</span>
+        </div>
+      </details>
+      <details>
+        <summary><h3>Refonte du site d'un garage</h3></summary>
+        <div class="detail">
+          <p>Refonte complète et sécurisée du site Bayside Garage, avec séparation entre l'environnement de test et la production.</p>
+          <span class="stack">Next.js, Vercel, Supabase</span>
+        </div>
+      </details>
+      <details>
+        <summary><h3>Modpack Minecraft</h3></summary>
+        <div class="detail">
+          <p>Création d'un modpack technologique pour Minecraft 1.21.1 : choix des mods, équilibrage et configuration.</p>
+          <span class="stack">NeoForge, Minecraft 1.21.1</span>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <ul>
+      <!-- Remplace par tes vraies infos -->
+      <li><a href="mailto:ton.email@exemple.fr">ton.email@exemple.fr</a></li>
+      <li><a href="https://www.linkedin.com/in/ton-profil">LinkedIn</a></li>
+    </ul>
+    <p class="extra">Permis B · Formation PSC1 (premiers secours)</p>
+    <a class="btn primary" href="cv.pdf">Télécharger mon CV</a>
+  </section>
+
+</main>
+
+<footer>© 2026 Johann Glotin</footer>
+
+<script>
+  // Fait glisser les éléments quand ils entrent à l'écran
+  (function () {
+    var items = [];
+    function add(selector, extraClass, step) {
+      document.querySelectorAll(selector).forEach(function (el, i) {
+        el.classList.add('reveal');
+        if (extraClass) el.classList.add(extraClass);
+        if (step) el.style.setProperty('--d', (i % 4) * step + 's');
+        items.push(el);
+      });
+    }
+    add('main h2');
+    add('.timeline li', 'from-left');
+    add('.skills > div', null, .18);
+    add('.projects details', null, .15);
+    add('.contact ul, .contact .extra, .contact .btn');
+
+    if (!('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(function (el) { io.observe(el); });
+  })();
+
+  // Halo violet qui suit le doigt ou la souris dans le hero
+  (function () {
+    var hero = document.getElementById('haut');
+    if (!hero || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    hero.addEventListener('pointermove', function (e) {
+      var r = hero.getBoundingClientRect();
+      hero.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      hero.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  })();
+</script>
+</body>
+</html>
